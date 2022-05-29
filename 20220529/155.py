@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self, value, prev, next):
         self.value = value
@@ -23,17 +24,26 @@ class MinStack(object):
         self.head.prev = newNode
         self.head = newNode
 
+
+
     def pop(self):
         """
         :rtype: None
         """
+        re_val = self.head
+        self.head = self.head.next
+        return re_val
+        
 
     def top(self):
         """
         :rtype: int
         """
+        return self.head
+        
 
     def getMin(self):
+        return self.minNode
         """
         :rtype: int
         """
