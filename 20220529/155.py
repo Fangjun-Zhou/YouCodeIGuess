@@ -10,6 +10,7 @@ class MinStack(object):
 
     def __init__(self):
         self.head = None
+        # TODO: Use priority queue here.
         self.minNode = None
 
     def push(self, val):
@@ -24,7 +25,8 @@ class MinStack(object):
         self.head.prev = newNode
         self.head = newNode
 
-
+        if val < self.minNode.value:
+            self.minNode = newNode
 
     def pop(self):
         """
@@ -32,15 +34,14 @@ class MinStack(object):
         """
         re_val = self.head
         self.head = self.head.next
+        self.head.prev = None
         return re_val
-        
 
     def top(self):
         """
         :rtype: int
         """
         return self.head
-        
 
     def getMin(self):
         return self.minNode
