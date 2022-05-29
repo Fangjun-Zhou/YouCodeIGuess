@@ -8,3 +8,5 @@ find_phone_number() {
 }
 
 find_phone_number
+
+grep -E "(?[0-9]{3})?[-]?\s?[0-9]{3}[-]?\s?[0-9]{4}" file.txt
