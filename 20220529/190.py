@@ -2,12 +2,11 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-
-
-        res = 1
-        for i in range(31, 0, -1):
-            bit = n >> i
-            res = res * 2**bit
+        res = 0
+        for i in range(31, -1, -1):
+            bit = (n >> i) % 2
+            print(i, bit)
+            res += 2**(32-i) * bit
         return res
 
 
