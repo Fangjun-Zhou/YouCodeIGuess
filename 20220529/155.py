@@ -1,10 +1,16 @@
 
+
 class Node:
     def __init__(self, value, prev, next):
         self.value = value
         self.prev = prev
         self.next = next
 
+class MinNode:
+    def __init__(self, value, prev, next):
+        self.value = value
+        self.prev = prev
+        self.next = next
 
 class MinStack(object):
 
@@ -12,6 +18,8 @@ class MinStack(object):
         self.head = None
         # TODO: Use priority queue here.
         self.minNode = None
+
+        self.minHead = None
 
     def push(self, val):
         """
@@ -28,6 +36,7 @@ class MinStack(object):
         if val < self.minNode.value:
             self.minNode = newNode
 
+
     def pop(self):
         """
         :rtype: None
@@ -35,7 +44,11 @@ class MinStack(object):
         re_val = self.head
         self.head = self.head.next
         self.head.prev = None
-        return re_val
+
+        if re_val == self.minNode:
+            "You are fucked"
+
+        return re_val.value
 
     def top(self):
         """
@@ -44,10 +57,11 @@ class MinStack(object):
         return self.head
 
     def getMin(self):
-        return self.minNode
         """
         :rtype: int
         """
+        return self.minNode
+        
 
 
 # Your MinStack object will be instantiated and called as such:
