@@ -2,8 +2,11 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-        ten = int(str(n), 2)
-        pass
+        res = 1
+        for i in range(31, 0, -1):
+            bit = n >> i
+            res = res * 2**bit
+        return res
 
 
 if __name__ == '__main__':
