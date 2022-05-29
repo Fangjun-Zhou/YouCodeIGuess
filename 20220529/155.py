@@ -1,16 +1,10 @@
-
-
 class Node:
     def __init__(self, value, prev, next):
         self.value = value
         self.prev = prev
         self.next = next
+        self.nextMin = None
 
-class MinNode:
-    def __init__(self, value, prev, next):
-        self.value = value
-        self.prev = prev
-        self.next = next
 
 class MinStack(object):
 
@@ -28,14 +22,17 @@ class MinStack(object):
         """
         if self.head == None:
             self.head = Node(val, None, None)
+            self.minNode = self.head
+            return
 
         newNode = Node(val, None, self.head)
         self.head.prev = newNode
         self.head = newNode
 
         if val < self.minNode.value:
+            if self.minNode != None:
+                newNode.nextMin = self.minNode
             self.minNode = newNode
-
 
     def pop(self):
         """
@@ -43,10 +40,11 @@ class MinStack(object):
         """
         re_val = self.head
         self.head = self.head.next
-        self.head.prev = None
+        if self.head != None:
+            self.head.prev = None
 
         if re_val == self.minNode:
-            "You are fucked"
+            self.minNode = re_val.nextMin
 
         return re_val.value
 
@@ -54,14 +52,13 @@ class MinStack(object):
         """
         :rtype: int
         """
-        return self.head
+        return self.head.value
 
     def getMin(self):
         """
         :rtype: int
         """
-        return self.minNode
-        
+        return self.minNode.value
 
 
 # Your MinStack object will be instantiated and called as such:
