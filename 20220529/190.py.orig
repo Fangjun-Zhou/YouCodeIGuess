@@ -2,6 +2,10 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
+<<<<<<< .merge_file_a61588
+        ten = int(str(n), 2)
+        pass
+=======
 
 
         res = 1
@@ -9,8 +13,13 @@ class Solution:
             bit = n >> i
             res = res * 2**bit
         return res
+>>>>>>> .merge_file_a31328
 
 
 if __name__ == '__main__':
     s = Solution()
+<<<<<<< .merge_file_a61588
     print(s.reverseBits(11111111111111111111111111111101))
+=======
+    print(s.reverseBits(11111111111111111111111111111101))
+>>>>>>> .merge_file_a31328
