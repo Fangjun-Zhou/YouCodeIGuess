@@ -2,6 +2,8 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
+
+
         res = 1
         for i in range(31, 0, -1):
             bit = n >> i
